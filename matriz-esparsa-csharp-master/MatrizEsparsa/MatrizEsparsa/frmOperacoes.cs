@@ -145,7 +145,7 @@ namespace MatrizEsparsa
             {
                 case 0:
                     {
-                        if (double.TryParse(txtElementoInsercaoMatriz1.Text, out elemento) && elemento != 0 &&
+                        if (double.TryParse(txtNumero.Text, out elemento) && elemento != 0 &&
     						numLinhaInsercaoMatriz1.Value >= 0 && numColunaInsercaoMatriz1.Value >= 0 && !matrizEsparsa1.EstaDesalocada)
                         {
                             int linha  = Convert.ToInt32(numLinhaInsercaoMatriz1.Value);
@@ -163,7 +163,7 @@ namespace MatrizEsparsa
                     }
                 case 1:
                     {
-                        if (double.TryParse(txtElementoInsercaoMatriz2.Text, out elemento) && elemento != 0 &&
+                        if (double.TryParse(txtNumero2.Text, out elemento) && elemento != 0 &&
 							numLinhaInsercaoMatriz2.Value >= 0 && numColunaInsercaoMatriz2.Value >= 0 && !matrizEsparsa2.EstaDesalocada)
                         {
                             int linha  = Convert.ToInt32(numLinhaInsercaoMatriz2.Value);
@@ -181,7 +181,7 @@ namespace MatrizEsparsa
                     }
                 case 2:
                     {
-                        if (double.TryParse(txtElementoInsercaoMatriz3.Text, out elemento) && elemento != 0 &&
+                        if (double.TryParse(txtNumeroResultado.Text, out elemento) && elemento != 0 &&
 							numLinhaInsercaoMatriz3.Value >= 0 && numColunaInsercaoMatriz3.Value >= 0 && !matrizEsparsa3.EstaDesalocada)
                         {
                             int linha  = Convert.ToInt32(numLinhaInsercaoMatriz3.Value);

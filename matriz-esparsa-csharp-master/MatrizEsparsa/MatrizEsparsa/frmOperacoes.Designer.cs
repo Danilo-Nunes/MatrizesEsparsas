@@ -41,7 +41,7 @@ namespace MatrizEsparsa
             this.numLinhaInsercaoMatriz1 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtElementoInsercaoMatriz1 = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.btnInserirElementoMatriz1 = new System.Windows.Forms.Button();
             this.btnCriarMatrizEsparsa1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace MatrizEsparsa
             this.numLinhaInsercaoMatriz2 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtElementoInsercaoMatriz2 = new System.Windows.Forms.TextBox();
+            this.txtNumero2 = new System.Windows.Forms.TextBox();
             this.btnInserirElementoMatriz2 = new System.Windows.Forms.Button();
             this.btnCriarMatrizEsparsa2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@ namespace MatrizEsparsa
             this.numLinhaInsercaoMatriz3 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtElementoInsercaoMatriz3 = new System.Windows.Forms.TextBox();
+            this.txtNumeroResultado = new System.Windows.Forms.TextBox();
             this.btnInserirElementoMatriz3 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@ namespace MatrizEsparsa
             this.dgMatrizEsparsa1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgMatrizEsparsa1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMatrizEsparsa1.Location = new System.Drawing.Point(12, 184);
+            this.dgMatrizEsparsa1.Location = new System.Drawing.Point(11, 12);
             this.dgMatrizEsparsa1.Name = "dgMatrizEsparsa1";
             this.dgMatrizEsparsa1.ReadOnly = true;
             this.dgMatrizEsparsa1.Size = new System.Drawing.Size(229, 277);
@@ -134,7 +134,7 @@ namespace MatrizEsparsa
             this.dgMatrizEsparsa3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgMatrizEsparsa3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMatrizEsparsa3.Location = new System.Drawing.Point(519, 184);
+            this.dgMatrizEsparsa3.Location = new System.Drawing.Point(519, 9);
             this.dgMatrizEsparsa3.Name = "dgMatrizEsparsa3";
             this.dgMatrizEsparsa3.ReadOnly = true;
             this.dgMatrizEsparsa3.Size = new System.Drawing.Size(276, 277);
@@ -144,7 +144,7 @@ namespace MatrizEsparsa
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Location = new System.Drawing.Point(3, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 25);
             this.label1.TabIndex = 4;
@@ -158,7 +158,7 @@ namespace MatrizEsparsa
             this.panel1.Controls.Add(this.numLinhaInsercaoMatriz1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.txtElementoInsercaoMatriz1);
+            this.panel1.Controls.Add(this.txtNumero);
             this.panel1.Controls.Add(this.btnInserirElementoMatriz1);
             this.panel1.Controls.Add(this.btnCriarMatrizEsparsa1);
             this.panel1.Controls.Add(this.label4);
@@ -167,7 +167,7 @@ namespace MatrizEsparsa
             this.panel1.Controls.Add(this.numColunasMatriz1);
             this.panel1.Controls.Add(this.btnLerMatriz1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(13, 9);
+            this.panel1.Location = new System.Drawing.Point(12, 295);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(228, 169);
             this.panel1.TabIndex = 7;
@@ -227,12 +227,12 @@ namespace MatrizEsparsa
             this.label12.TabIndex = 30;
             this.label12.Text = "Número:";
             // 
-            // txtElementoInsercaoMatriz1
+            // txtNumero
             // 
-            this.txtElementoInsercaoMatriz1.Location = new System.Drawing.Point(81, 85);
-            this.txtElementoInsercaoMatriz1.Name = "txtElementoInsercaoMatriz1";
-            this.txtElementoInsercaoMatriz1.Size = new System.Drawing.Size(115, 20);
-            this.txtElementoInsercaoMatriz1.TabIndex = 29;
+            this.txtNumero.Location = new System.Drawing.Point(81, 85);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(115, 20);
+            this.txtNumero.TabIndex = 29;
             // 
             // btnInserirElementoMatriz1
             // 
@@ -339,7 +339,7 @@ namespace MatrizEsparsa
             this.panel2.Controls.Add(this.numLinhaInsercaoMatriz2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txtElementoInsercaoMatriz2);
+            this.panel2.Controls.Add(this.txtNumero2);
             this.panel2.Controls.Add(this.btnInserirElementoMatriz2);
             this.panel2.Controls.Add(this.btnCriarMatrizEsparsa2);
             this.panel2.Controls.Add(this.label7);
@@ -408,12 +408,12 @@ namespace MatrizEsparsa
             this.label6.TabIndex = 30;
             this.label6.Text = "Número:";
             // 
-            // txtElementoInsercaoMatriz2
+            // txtNumero2
             // 
-            this.txtElementoInsercaoMatriz2.Location = new System.Drawing.Point(80, 82);
-            this.txtElementoInsercaoMatriz2.Name = "txtElementoInsercaoMatriz2";
-            this.txtElementoInsercaoMatriz2.Size = new System.Drawing.Size(115, 20);
-            this.txtElementoInsercaoMatriz2.TabIndex = 29;
+            this.txtNumero2.Location = new System.Drawing.Point(80, 82);
+            this.txtNumero2.Name = "txtNumero2";
+            this.txtNumero2.Size = new System.Drawing.Size(115, 20);
+            this.txtNumero2.TabIndex = 29;
             // 
             // btnInserirElementoMatriz2
             // 
@@ -531,14 +531,14 @@ namespace MatrizEsparsa
             this.panel3.Controls.Add(this.numLinhaInsercaoMatriz3);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.txtElementoInsercaoMatriz3);
+            this.panel3.Controls.Add(this.txtNumeroResultado);
             this.panel3.Controls.Add(this.btnInserirElementoMatriz3);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.numLinhasMatriz3);
             this.panel3.Controls.Add(this.numColunasMatriz3);
             this.panel3.Controls.Add(this.label18);
-            this.panel3.Location = new System.Drawing.Point(519, 9);
+            this.panel3.Location = new System.Drawing.Point(519, 295);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(276, 169);
             this.panel3.TabIndex = 36;
@@ -608,12 +608,12 @@ namespace MatrizEsparsa
             this.label15.TabIndex = 30;
             this.label15.Text = "Número:";
             // 
-            // txtElementoInsercaoMatriz3
+            // txtNumeroResultado
             // 
-            this.txtElementoInsercaoMatriz3.Location = new System.Drawing.Point(80, 85);
-            this.txtElementoInsercaoMatriz3.Name = "txtElementoInsercaoMatriz3";
-            this.txtElementoInsercaoMatriz3.Size = new System.Drawing.Size(115, 20);
-            this.txtElementoInsercaoMatriz3.TabIndex = 29;
+            this.txtNumeroResultado.Location = new System.Drawing.Point(80, 85);
+            this.txtNumeroResultado.Name = "txtNumeroResultado";
+            this.txtNumeroResultado.Size = new System.Drawing.Size(115, 20);
+            this.txtNumeroResultado.TabIndex = 29;
             // 
             // btnInserirElementoMatriz3
             // 
@@ -787,7 +787,7 @@ namespace MatrizEsparsa
         private System.Windows.Forms.NumericUpDown numLinhaInsercaoMatriz1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtElementoInsercaoMatriz1;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Button btnInserirElementoMatriz1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.NumericUpDown numColunaInsercaoMatriz2;
@@ -795,7 +795,7 @@ namespace MatrizEsparsa
         private System.Windows.Forms.NumericUpDown numLinhaInsercaoMatriz2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtElementoInsercaoMatriz2;
+        private System.Windows.Forms.TextBox txtNumero2;
         private System.Windows.Forms.Button btnInserirElementoMatriz2;
         private System.Windows.Forms.Button btnCriarMatrizEsparsa2;
         private System.Windows.Forms.Label label7;
@@ -810,7 +810,7 @@ namespace MatrizEsparsa
         private System.Windows.Forms.NumericUpDown numLinhaInsercaoMatriz3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtElementoInsercaoMatriz3;
+        private System.Windows.Forms.TextBox txtNumeroResultado;
         private System.Windows.Forms.Button btnInserirElementoMatriz3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
