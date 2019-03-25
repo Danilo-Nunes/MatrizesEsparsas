@@ -63,9 +63,6 @@ namespace MatrizEsparsa
             this.numLinhaRemocao = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.btnRemoverCelula = new System.Windows.Forms.Button();
-            this.btnSobre = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnGitHub = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.txtValorSoma = new System.Windows.Forms.TextBox();
@@ -86,7 +83,6 @@ namespace MatrizEsparsa
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numColunaRemocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLinhaRemocao)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numColunaSoma)).BeginInit();
             this.SuspendLayout();
@@ -470,36 +466,6 @@ namespace MatrizEsparsa
             this.btnRemoverCelula.UseVisualStyleBackColor = true;
             this.btnRemoverCelula.Click += new System.EventHandler(this.btnRemoverCelula_Click);
             // 
-            // btnSobre
-            // 
-            this.btnSobre.Location = new System.Drawing.Point(3, 7);
-            this.btnSobre.Name = "btnSobre";
-            this.btnSobre.Size = new System.Drawing.Size(75, 29);
-            this.btnSobre.TabIndex = 29;
-            this.btnSobre.Text = "Autores";
-            this.btnSobre.UseVisualStyleBackColor = true;
-            this.btnSobre.Click += new System.EventHandler(this.btnSobre_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnGitHub);
-            this.panel2.Controls.Add(this.btnSobre);
-            this.panel2.Location = new System.Drawing.Point(1193, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(92, 80);
-            this.panel2.TabIndex = 32;
-            // 
-            // btnGitHub
-            // 
-            this.btnGitHub.Location = new System.Drawing.Point(3, 41);
-            this.btnGitHub.Name = "btnGitHub";
-            this.btnGitHub.Size = new System.Drawing.Size(75, 31);
-            this.btnGitHub.TabIndex = 30;
-            this.btnGitHub.Text = "GitHub";
-            this.btnGitHub.UseVisualStyleBackColor = true;
-            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
-            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -568,7 +534,6 @@ namespace MatrizEsparsa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 375);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelOpcoes);
@@ -598,7 +563,6 @@ namespace MatrizEsparsa
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numColunaRemocao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLinhaRemocao)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numColunaSoma)).EndInit();
@@ -639,10 +603,7 @@ namespace MatrizEsparsa
         private System.Windows.Forms.NumericUpDown numLinhaRemocao;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnRemoverCelula;
-        private System.Windows.Forms.Button btnSobre;
         private System.Windows.Forms.Button btnOperacoes;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnGitHub;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtValorSoma;
