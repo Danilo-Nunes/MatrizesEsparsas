@@ -1,4 +1,4 @@
-﻿namespace MatrizesEsparcas
+﻿namespace MatrizEsparsa
 {
     partial class Form1
     {
