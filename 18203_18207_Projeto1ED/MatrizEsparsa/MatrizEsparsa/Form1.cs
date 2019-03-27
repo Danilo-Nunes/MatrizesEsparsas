@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MatrizEsparsa
 {
-    public partial class Form1 : Form
+    public partial class FrmMatrizEsparsa : Form
     {
-        public Form1()
+        public FrmMatrizEsparsa()
         {
             InitializeComponent();
         }

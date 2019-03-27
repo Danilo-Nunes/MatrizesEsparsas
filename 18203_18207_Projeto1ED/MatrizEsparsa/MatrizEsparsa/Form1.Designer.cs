@@ -1,6 +1,6 @@
 ﻿namespace MatrizEsparsa
 {
-    partial class Form1
+    partial class FrmMatrizEsparsa
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FrmMatrizEsparsa
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(851, 560);
+            this.Name = "FrmMatrizEsparsa";
+            this.Text = "FrmMatrizEsparsa";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
