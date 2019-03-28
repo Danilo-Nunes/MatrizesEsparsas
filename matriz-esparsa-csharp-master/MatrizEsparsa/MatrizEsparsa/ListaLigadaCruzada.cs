@@ -111,7 +111,7 @@ namespace MatrizEsparsa
             Celula colunaCabeca = cabecaPrincipal;
             Celula linhaCabeca  = cabecaPrincipal;
 
-            for (int j = 0; j <= coluna; j++)
+            for (int j = 0; j <= coluna; j++) 
                 colunaCabeca = colunaCabeca.Direita;
             
             for (int i = 0; i <= linha; i++) 
@@ -120,7 +120,7 @@ namespace MatrizEsparsa
             Celula anterior = linhaCabeca;
             Celula atual    = linhaCabeca.Direita;
 
-            while (atual.Coluna < coluna && atual.Coluna != -1)
+            while (atual.Coluna < coluna && atual.Coluna != -1) //?
             {
                 anterior = atual;
                 atual    = atual.Direita;
