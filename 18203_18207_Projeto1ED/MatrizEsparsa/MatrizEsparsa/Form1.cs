@@ -16,5 +16,11 @@ namespace MatrizEsparsa
         {
             InitializeComponent();
         }
+
+        private void btnCriar_Click(object sender, EventArgs e)
+        {
+            if (numColuna.Value == 0 || numLinha.Value == 0)
+                MessageBox.Show("Não é possível criar matriz vazia");
+        }
     }
 }
