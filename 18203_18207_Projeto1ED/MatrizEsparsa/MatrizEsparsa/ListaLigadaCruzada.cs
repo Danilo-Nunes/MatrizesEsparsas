@@ -278,5 +278,48 @@ namespace MatrizEsparsa
 
             return true; 
         }
+
+        public void SomarNaColuna(double x, int coluna)
+        {
+            // condições que verificam a validade dos parâmetros passados
+            if (coluna <= 0 || coluna >= this.colunas)
+                throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
+
+            if (x == 0)
+                return; // se for 0, não precisa fazer nada
+
+            double valorDoAtual = 0;
+            Celula celLinha = cabeca;
+
+            for(int j = 0; j < this.Linhas; j++)
+            {
+                celLinha = celLinha.Abaixo;
+                Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+
+                for (int i = 0; i < colunas; i++) // coloca os valores no vetor
+                {
+                    celColuna = celColuna.Direita;
+                    valorDoAtual = celColuna.Valor;
+                    if(valorDoAtual + x == 0)
+                    {
+                        RemoverEm(i, coluna); //!
+                        continue;
+                    }
+                    InserirElemento(valorDoAtual + x, i, coluna);//!
+                }
+            }
+        }
+
+        public ListaLigadaCruzada SomarMatrizes(ListaLigadaCruzada outra)
+        {
+            ListaLigadaCruzada resultado = new ListaLigadaCruzada();
+            return resultado;
+        }
+
+        public ListaLigadaCruzada MultiplicarMatrizes(ListaLigadaCruzada outra)
+        {
+            ListaLigadaCruzada resultado = new ListaLigadaCruzada();
+            return resultado;
+        }
     }
 }
