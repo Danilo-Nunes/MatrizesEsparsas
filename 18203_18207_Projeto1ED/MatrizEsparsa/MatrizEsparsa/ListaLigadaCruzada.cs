@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MatrizEsparsa
 {
@@ -93,6 +94,17 @@ namespace MatrizEsparsa
             geradora.Direita = geradora;
             geradora.Abaixo = cabeca;
         }
+        public void ApagarMatriz()
+        {
+            cabeca = null; // deixa a cabeca nula o que faz com que seja inascessivel, eliminando assim todos os elementos da matriz que logo são deletados pelo garbage collector da linguagem
+            linhas = 0;
+            colunas = 0;
+        }
+
+        public void ExibirDataGridview(DataGridView dgv)
+        {
+
+        }
 
         public void InserirElemento(double elemento, int linha, int coluna)
         {
@@ -121,10 +133,97 @@ namespace MatrizEsparsa
             Celula anterior = celLinha;
             Celula atual = celLinha.Direita;
 
-            while(atual.Coluna < coluna && atual.Coluna != -1)
+            while(atual.Coluna < coluna && atual.Coluna != -1) // percorre as colunas até achar a posição desejada ou até que seja igual a cabeca
             {
-
+                anterior = atual;
+                atual = atual.Direita;
             }
+
+            if (atual.Valor == 0) // caso seja uma célula vazia
+            {
+                Celula nova = new Celula(elemento, linha, coluna); // cria célula a ser inserida na matriz
+
+                anterior.Direita = nova; 
+                nova.Direita = atual;
+
+                Celula colunaAnt = celColuna;
+                Celula colunaAt = celColuna.Abaixo;
+
+                while (colunaAt.Abaixo != celColuna && colunaAt.Linha != linha) // percorre a coluna até achar a posião desejada e depois insere ela no ponteiro da célula anterior 
+                {
+                    colunaAnt = colunaAt;
+                    colunaAt = colunaAt.Abaixo;
+                }
+                nova.Abaixo = colunaAt;
+                colunaAnt.Abaixo = nova;
+            }
+            else
+                atual.Valor = elemento; // caso não seja, apenas alteramos o valor guardado pela célula
+        }
+
+        private double ValorDe(int linha, int coluna)
+        {
+            // condições que verificam a validade dos parâmetros passados
+            if (linha <= 0 || linha >= this.linhas)
+                throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
+
+            if (coluna <= 0 || coluna >= this.colunas)
+                throw new Exception("coluna fora dos limites da matriz.");
+
+            Celula celLinha = cabeca;            
+
+            for (int i = 0; i < linha; i++) // percorre a linha até achar a posição desejada
+                celLinha = celLinha.Abaixo;
+
+            Celula celColuna = celLinha.Direita; // inicia a célula da coluna, onde percorreremos 
+
+            while (celColuna.Coluna < coluna && celColuna != celLinha) // percorre a coluna até achar a posição desejada 
+                celColuna = celColuna.Direita;            
+
+            return (double)celColuna.Valor; // retorna o valor armazenado pela célula, caso seja nenhum, retornará 0(celula coluna = celula linha)
+        }
+
+        public bool RemoverEm(int linha, int coluna)
+        {
+            // condições que verificam a validade dos parâmetros passados
+            if (linha <= 0 || linha >= this.linhas)
+                throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
+
+            if (coluna <= 0 || coluna >= this.colunas)
+                throw new Exception("coluna fora dos limites da matriz.");
+
+            Celula celLinha = cabeca;
+            Celula celColuna = cabeca;
+
+            // percorre as linhas e depois as colunas até achar as desejadas
+            for (int i = 0; i < linha; i++)
+                celLinha = celLinha.Abaixo;
+
+            for (int i = 0; i < coluna; i++)
+                celColuna = celColuna.Direita;
+
+            Celula anteriorLinha = celLinha;
+            Celula atualLinha = celLinha.Direita; // celula a sedr removida da matriz
+
+            while(atualLinha.Coluna != coluna && atualLinha.Coluna != -1) // percorre a coluna até achar a desaja ou até que ela seja igual a cabeca
+            {
+                anteriorLinha = atualLinha;
+                atualLinha = atualLinha.Direita;
+            }
+
+            if (atualLinha.Valor == 0) // se o valor armazenado pela célula for 0, ou seja, célula vazia
+                return false; // não há uma célula utilizada para ser removida
+
+            anteriorLinha.Direita = atualLinha.Direita; // elimina o ponteiro do elemento anterior a ele na linha que se liga ao valor
+
+            Celula atualColuna = celColuna; // celula que usarem,os para percorre a coluna
+
+            while (atualColuna != atualLinha) // percorre até achar o anterior ao elemento 
+                atualColuna = atualColuna.Abaixo;
+
+            atualColuna.Abaixo = atualLinha.Abaixo; // elimina o ponteiro do elemento anterior a ele na coluna que se liga ao valor
+
+            return true; 
         }
     }
 }
