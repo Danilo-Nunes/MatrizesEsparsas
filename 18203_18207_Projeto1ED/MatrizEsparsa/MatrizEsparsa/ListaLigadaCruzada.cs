@@ -103,7 +103,60 @@ namespace MatrizEsparsa
 
         public void ExibirDataGridview(DataGridView dgv)
         {
+            if (dgv == null)
+                throw new Exception("gridView utilizado é nulo."); // ArgumentException
 
+            // limpa o gridView para poder reutilizar gridViews
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+
+            // cria o cabeçalho das colunas
+            for (int i = 0; i < this.Colunas; i++)
+                dgv.Columns.Add(i.ToString(), i.ToString());
+
+            // cria vetor de strings que armazenará as linhas da matriz para ser utilizado pelo gridView
+            string[] linhaMatriz = new string[this.Colunas];
+            Celula celLinha = cabeca; // inicia celula que será usada para percorrer as linhas da matriz
+
+            // percorre as linhas e colunas da matriz e insere os valores das celulas no gridView
+            for (int j = 0; j < this.Linhas; j++)
+            {
+                celLinha = celLinha.Abaixo;
+                Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+
+                for (int i = 0; i < colunas; i++) // coloca os valores no vetor
+                {
+                    celColuna = celColuna.Direita;
+                    linhaMatriz[i] = celColuna.Valor.ToString();
+                }
+                dgv.Rows.Add(linhaMatriz); // adiciona o vetor ao gridView
+                dgv.Rows[j].HeaderCell.Value = j.ToString(); // adiciona cabeçalho da linha
+            }
+            dgv.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders);
+            dgv.AutoResizeColumns();
+        }
+
+        public override string ToString()
+        {
+            string ret = "{";
+
+            Celula celLinha = cabeca.Abaixo;
+
+            while(celLinha != cabeca)
+            {
+                Celula celColuna = celLinha.Direita; // inicia celula que usaremos para percorrer as colunas da linha da matriz
+
+                while (celColuna != celLinha) // enquanto estivermos percorrendo elementos com valor diferente da celula cabeca
+                {
+                    ret += celColuna.ToString() + (celColuna.Direita != celLinha ? ", " : " "); // se a celula da direita for diferente da cabeca, será posto uma virgula, caso o contrário, nada, apenas espaço
+
+                    celColuna = celColuna.Direita; // avançamos a coluna
+                }
+
+                celLinha = celLinha.Abaixo; // atualiza a linha para um abaixo
+            }
+
+            return ret + "}"; 
         }
 
         public void InserirElemento(double elemento, int linha, int coluna)
