@@ -295,30 +295,40 @@ namespace MatrizEsparsa
             {
                 celLinha = celLinha.Abaixo;
                 Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+                Celula celColunaAnterior; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz
 
                 for (int i = 0; i < colunas; i++) // coloca os valores no vetor
                 {
-                    celColuna = celColuna.Direita;
-                    valorDoAtual = celColuna.Valor;
-                    if(valorDoAtual + x == 0)
+                    celColunaAnterior = celColuna; // atualiza o valor da celularAnterior para a celula
+                    celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
+                    valorDoAtual = celColuna.Valor; // obtem o valor armazenado por ela para comparação
+                    if(valorDoAtual + x == 0) // se a soma resultar em zero removeremos a celula da matriz
                     {
-                        RemoverEm(i, coluna); //!
-                        continue;
+                        celColunaAnterior.Direita = celColuna.Direita; //  RemoverEm(i, coluna); seria ineficiente                        
+                        continue; // volta ao loop sem passar no comando de baixo
                     }
-                    InserirElemento(valorDoAtual + x, i, coluna);//!
+                    celColuna.Valor = valorDoAtual + x; // soma o valor antigo dela ao desejado para soma
                 }
             }
         }
 
         public ListaLigadaCruzada SomarMatrizes(ListaLigadaCruzada outra)
         {
-            ListaLigadaCruzada resultado = new ListaLigadaCruzada();
+            if (this.linhas != outra.linhas || this.colunas != outra.colunas)
+                throw new Exception("As Matrizes dever ser de mesma dimensão!"); // ArgumentException
+
+            ListaLigadaCruzada resultado = new ListaLigadaCruzada(this.linhas, this.colunas);
+
             return resultado;
         }
 
         public ListaLigadaCruzada MultiplicarMatrizes(ListaLigadaCruzada outra)
         {
-            ListaLigadaCruzada resultado = new ListaLigadaCruzada();
+            if (this.linhas != outra.linhas || this.colunas != outra.colunas)
+                throw new Exception("As Matrizes dever ser de mesma dimensão!"); // ArgumentException
+
+            ListaLigadaCruzada resultado = new ListaLigadaCruzada(this.linhas, this.colunas);
+
             return resultado;
         }
     }
