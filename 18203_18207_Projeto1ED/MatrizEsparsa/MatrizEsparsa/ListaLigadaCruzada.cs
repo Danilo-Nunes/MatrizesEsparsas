@@ -317,7 +317,38 @@ namespace MatrizEsparsa
             if (this.linhas != outra.linhas || this.colunas != outra.colunas)
                 throw new Exception("As Matrizes dever ser de mesma dimensão!"); // ArgumentException
 
+            // iniciamos a primeira celula de ambas as matrizes para percorrê-las
+            Celula atualM1 = this.cabeca.Direita.Abaixo;
+            Celula atualM2 = outra.cabeca.Direita.Abaixo;
+
+            // cria a lista que será a soma das matrizes
             ListaLigadaCruzada resultado = new ListaLigadaCruzada(this.linhas, this.colunas);
+
+            for (int j = 0; j < this.linhas; j++) // percorre as linhas da matriz
+            {
+                for (int i = 0; i < this.colunas; i++) // percorre as colunas da matriz
+                {
+                    double valor = 0; // valor que será usado para calcular a soma dos valores
+
+                    if(atualM1.Valor != 0)  // se o valor armazenado na matriz a ser somada com outra for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem somados
+                    {
+                        // armazenamos o valor da celula no valor e prosseguimos para a proxima celula desta matriz
+                        valor = atualM1.Valor;
+                        atualM1 = atualM1.Direita;
+                    }
+
+                    if (atualM2.Valor != 0) // se o valor armazenado na outra for 0, não percorreremos mais a linha dessa matriz, pois não terá mais valores a serem somados
+                    {
+                        // armazenamos o valor da celula no valor e prosseguimos para a proxima celula da outra matriz
+                        valor += atualM2.Valor;
+                        atualM2 = atualM2.Direita;
+                    }
+
+                    if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
+                        resultado.InserirElemento(valor, j, i);
+                }
+                atualM2 = atualM2.Abaixo.Direita; // listas são circulares, logo retorna para o começo da próxima linha
+            }           
 
             return resultado;
         }
@@ -327,7 +358,35 @@ namespace MatrizEsparsa
             if (this.linhas != outra.linhas || this.colunas != outra.colunas)
                 throw new Exception("As Matrizes dever ser de mesma dimensão!"); // ArgumentException
 
+            // iniciamos a primeira celula de ambas as matrizes para percorrê-las
+            Celula atualM1 = this.cabeca.Direita.Abaixo;
+            Celula atualM2 = outra.cabeca.Direita.Abaixo;
+
+            // cria a lista que será a multiplicação das matrizes
             ListaLigadaCruzada resultado = new ListaLigadaCruzada(this.linhas, this.colunas);
+
+            for (int j = 0; j < this.linhas; j++) // percorre as linhas da matriz
+            {
+                for (int i = 0; i < this.colunas; i++) // percorre as colunas da matriz
+                {
+                    double valor = 1; // valor que será usado para calcular a multiplicação dos valores
+
+                    if (atualM1.Valor != 0 || atualM2.Valor != 0)  // se o valor armazenado nas matrizes for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem multiplicado, serão todos 0, o resultado
+                    {
+                        // multiplicamos o valor da celula e prosseguimos para a proxima celula desta matriz
+                        valor *= atualM1.Valor;
+                        atualM1 = atualM1.Direita;
+                        
+                        // multiplicamos o valor da celula e prosseguimos para a proxima celula da outra matriz
+                        valor *= atualM2.Valor;
+                        atualM2 = atualM2.Direita;
+
+                        // inserimos o elemento que será diferente de 0, não precisando de verificação
+                        resultado.InserirElemento(valor, j, i);
+                    }                    
+                }
+                atualM2 = atualM2.Abaixo.Direita; // listas são circulares, logo retorna para o começo da próxima linha
+            }
 
             return resultado;
         }
