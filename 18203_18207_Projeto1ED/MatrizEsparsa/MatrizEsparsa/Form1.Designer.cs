@@ -238,6 +238,7 @@
             this.btnMultiplicar.TabIndex = 13;
             this.btnMultiplicar.Text = "Multiplicar Matrizes";
             this.btnMultiplicar.UseVisualStyleBackColor = true;
+            this.btnMultiplicar.Click += new System.EventHandler(this.BtnMultiplicar_Click);
             // 
             // btnSomar
             // 

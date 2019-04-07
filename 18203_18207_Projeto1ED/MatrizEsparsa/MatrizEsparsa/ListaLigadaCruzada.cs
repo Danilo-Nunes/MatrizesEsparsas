@@ -353,7 +353,9 @@ namespace MatrizEsparsa
                     if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
                         resultado.InserirElemento(valor, j, i);
                 }
-                atualM2 = atualM2.Abaixo.Direita; // listas são circulares, logo retorna para o começo da próxima linha
+                atualM2 = atualM2.Abaixo.Direita;// listas são circulares, logo retorna para o começo da próxima linha
+                atualM1 = atualM1.Abaixo.Direita;
+
             }           
 
             return resultado;
@@ -392,6 +394,7 @@ namespace MatrizEsparsa
                     }                    
                 }
                 atualM2 = atualM2.Abaixo.Direita; // listas são circulares, logo retorna para o começo da próxima linha
+                atualM1 = atualM1.Abaixo.Direita;
             }
 
             return resultado;

@@ -20,27 +20,28 @@ namespace MatrizEsparsa
             if(dlgAbrir.ShowDialog() == DialogResult.OK)
             {
                 StreamReader arquivo = new StreamReader(dlgAbrir.FileName);
-                int linhas = int.Parse(arquivo.ReadLine());
+                int linhas = int.Parse(arquivo.ReadLine()); //Lê-se as quantidade de linhas e colunas do arquivo
                 int colunas = int.Parse(arquivo.ReadLine());
-                ListaLigadaCruzada li = new ListaLigadaCruzada(linhas, colunas);
+                ListaLigadaCruzada li = new ListaLigadaCruzada(linhas, colunas);//Cria-se uma nova para não ser necessário 
+                                                                                //escrever o código duas vezes
 
                 while(!arquivo.EndOfStream)
                 {
                     string texto = arquivo.ReadLine();
 
-                    int linha = int.Parse(texto.Substring(1, 2));
+                    int linha = int.Parse(texto.Substring(1, 2));//Busca de dentro da string os valores necessários para a inclusão
                     int col = int.Parse(texto.Substring(4, 2));
-                    int valor = int.Parse(texto.Substring(7, 3));
+                    double valor = double.Parse(texto.Substring(7, 5));
 
                     li.InserirElemento(valor, linha, col);
                 }
 
-                if(rbLista1.Checked)
+                if(rbLista1.Checked) //Caso foi solicitado pelo usuário que esse arquivo seja a lista1, exibi-la no primeiro DGV
                 {
                     lista = li;
                     lista.ExibirDataGridview(dgvUm);
                 }
-                else
+                else //Caso não, exibi-lo no segundo
                 {
                     lista2 = li;
                     lista.ExibirDataGridview(dgvDois);
@@ -54,19 +55,21 @@ namespace MatrizEsparsa
 
         private void btnCriar_Click(object sender, EventArgs e)
         {
-            if (numColuna.Value == 0 || numLinha.Value == 0)
+            if (numColuna.Value == 0 || numLinha.Value == 0) 
                 MessageBox.Show("Não é possível criar matriz vazia");
 
+
+            //Cria-se uma nova, pelo mesmo motivo anteriror
             ListaLigadaCruzada lis = new ListaLigadaCruzada(Convert.ToInt32(numLinha.Value), Convert.ToInt32(numColuna.Value));
 
             if(rbLista1.Checked)
             {
-                lista = lis;
+                lista = lis; //Caso seja solicitado a lista1
                 lista.ExibirDataGridview(dgvUm);
             }
             else
             {
-                lista2 = lis;
+                lista2 = lis; //Caso seja a lista2
                 lista2.ExibirDataGridview(dgvDois);
             }
         }
@@ -81,7 +84,10 @@ namespace MatrizEsparsa
           if(rbLista1.Checked)
             {
                 if (lista == null)
-                    throw new Exception("Matriz Vazia");
+                    throw new Exception("Matriz Vazia");//Nesse caso não é possível realizar com uma lista padrão, 
+                                                        //então o código deve ser feito duas vezes
+
+                //Chama-se os métodos já implementados na ListaLigadaCruzada
                 lista.InserirElemento(double.Parse(txtValor.Text), Convert.ToInt32(numLinha.Value), Convert.ToInt32(numColuna.Value));
                 lista.ExibirDataGridview(dgvUm);
             }
@@ -106,6 +112,7 @@ namespace MatrizEsparsa
             {
                 if (lista == null)
                     throw new Exception("Matriz Vazia");
+                //Chama-se os métodos já implementados na ListaLigadaCruzada
                 lista.RemoverEm(Convert.ToInt32(numLinha.Value), Convert.ToInt32(numColuna.Value));
                 lista.ExibirDataGridview(dgvUm);
             }
@@ -124,6 +131,7 @@ namespace MatrizEsparsa
             {
                 if (lista == null)
                     throw new Exception("Matriz Vazia");
+                //Chamamos o método já implementados na classe ListaLigadaCruzada e o exibimos
                 txtValor.Text = lista.ValorDe(Convert.ToInt32(numLinha.Value), Convert.ToInt32(numColuna.Value)) + "";
             }
             else
@@ -140,6 +148,7 @@ namespace MatrizEsparsa
             {
                 if (lista == null)
                     throw new Exception("Matriz Vazia");
+                //Chama-se os métodos já implementados na ListaLigadaCruzada
                 lista.SomarNaColuna(double.Parse(txtValor.Text), Convert.ToInt32(numColuna.Value));
                 lista.ExibirDataGridview(dgvUm);
             }
@@ -152,11 +161,23 @@ namespace MatrizEsparsa
             }
         }
 
+        private void BtnMultiplicar_Click(object sender, EventArgs e)
+        {
+            if (lista == null || lista2 == null)
+                throw new Exception("Duas Matrizes Necessárias");//Caso o usuário não tenha fornecido uma das matrizes.
+
+            //Chama-se os métodos já implementados na ListaLigadaCruzada
+            resultado = lista.MultiplicarMatrizes(lista2);
+
+            resultado.ExibirDataGridview(dgvResultado);
+        }
+
         private void BtnSomar_Click(object sender, EventArgs e)
         {
             if (lista == null || lista2 == null)
                 throw new Exception("Duas Matrizes Necessárias");
 
+            //Chama-se os métodos já implementados na ListaLigadaCruzada
             resultado = lista.SomarMatrizes(lista2);
 
             resultado.ExibirDataGridview(dgvResultado);
