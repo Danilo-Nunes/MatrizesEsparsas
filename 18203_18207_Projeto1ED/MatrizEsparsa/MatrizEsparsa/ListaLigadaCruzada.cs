@@ -26,7 +26,7 @@ namespace MatrizEsparsa
             private set
             {
                 if (value > 0)
-                    this.colunas = value;
+                    this.linhas = value;
                 else
                     throw new Exception("O número de linhas deve ser maior que 0.");
             }
@@ -40,7 +40,7 @@ namespace MatrizEsparsa
             private set
             {
                 if (value > 0)
-                    this.linhas = value;
+                    this.colunas = value;
                 else
                     throw new Exception("O número de colunas deve ser maior que 0.");
             }
@@ -79,7 +79,7 @@ namespace MatrizEsparsa
             // prepara para gerar as linhas, reiniciando os atributos
             geradora = cabeca;
 
-            for(int i = 0; i < this.linhas; i++)
+            for(int i = 0; i < this.Linhas; i++)
             {
                 Celula novaCelulaLinha = new Celula(padrao, i, -1);
 
@@ -117,6 +117,8 @@ namespace MatrizEsparsa
             // cria vetor de strings que armazenará as linhas da matriz para ser utilizado pelo gridView
             string[] linhaMatriz = new string[this.Colunas];
             Celula celLinha = cabeca; // inicia celula que será usada para percorrer as linhas da matriz
+
+            Console.WriteLine(this.ToString());
 
             // percorre as linhas e colunas da matriz e insere os valores das celulas no gridView
             for (int j = 0; j < this.Linhas; j++)
@@ -162,10 +164,10 @@ namespace MatrizEsparsa
         public void InserirElemento(double elemento, int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (linha <= 0 || linha >= this.linhas)
+            if (linha < 0 || linha > linhas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > colunas)
                 throw new Exception("coluna fora dos limites da matriz."); 
 
             if (elemento == padrao)
