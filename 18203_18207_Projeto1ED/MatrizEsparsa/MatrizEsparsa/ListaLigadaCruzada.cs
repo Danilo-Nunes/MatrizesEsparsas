@@ -198,7 +198,7 @@ namespace MatrizEsparsa
                 atual = atual.Direita;
             }
 
-            if (atual.Valor == 0) // caso seja uma célula vazia
+            if (atual.Valor == 0 || atual.Coluna > coluna) // caso seja uma célula vazia
             {
                 Celula nova = new Celula(elemento, linha, coluna); // cria célula a ser inserida na matriz
 
@@ -213,8 +213,17 @@ namespace MatrizEsparsa
                     colunaAnt = colunaAt;
                     colunaAt = colunaAt.Abaixo;
                 }
-                nova.Abaixo = colunaAnt;
-                colunaAt.Abaixo = nova;
+
+                if (colunaAt.Linha > linha)
+                {
+                    nova.Abaixo = colunaAt;
+                    colunaAnt.Abaixo = nova;
+                }
+                else
+                {
+                    nova.Abaixo = celColuna;
+                    colunaAt.Abaixo = nova;
+                }
             }
             else
                 atual.Valor = elemento; // caso não seja, apenas alteramos o valor guardado pela célula
@@ -294,26 +303,39 @@ namespace MatrizEsparsa
             if (k == 0)
                 return; // se for 0, não precisa fazer nada
 
-            double valorDoAtual = 0;
-            Celula celLinha = cabeca;
+            double valorDoAtual = 0; // armazenará o valor da célula para consulta
 
-            for(int j = 0; j < this.Linhas; j++)
+            Celula celColuna = cabeca; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+
+            for (int j = 0; j <= coluna; j++) // percorre as colunas da matriz até achar a desejada
             {
-                celLinha = celLinha.Abaixo;
-                Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
-                Celula celColunaAnterior; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz
+                celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
+            }
 
-                for (int i = 0; i < colunas; i++) // coloca os valores no vetor
+                           
+            Celula celLinha = celColuna.Abaixo; // celula da linha que usaremos para percorrer a coluna
+            Celula celLinhaAnterior = celLinha; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz
+
+            for (int i = 0; i < linhas; i++) // percorre a coluna até acabar as linhas
+            {
+               
+                if (celLinha.Linha == i)
                 {
-                    celColunaAnterior = celColuna; // atualiza o valor da celularAnterior para a celula
-                    celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
-                    valorDoAtual = celColuna.Valor; // obtem o valor armazenado por ela para comparação
-                    if(valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
+                    valorDoAtual = celLinha.Valor; // obtem o valor armazenadona célula para comparação
+
+                    if (valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
                     {
-                        celColunaAnterior.Direita = celColuna.Direita; //  RemoverEm(i, coluna); seria ineficiente                        
+                        celLinhaAnterior.Abaixo = celLinha.Abaixo; // remove a célula que valeria 0 da matriz                        
                         continue; // volta ao loop sem passar no comando de baixo
                     }
-                    celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
+                    celLinha.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
+
+                    celLinhaAnterior = celLinha; // armazena valor atual da linha
+                    celLinha = celLinha.Abaixo;// avança para a próxima célula
+                }
+                else
+                {
+                    InserirElemento(k, i, celLinha.Coluna);
                 }
             }
         }
@@ -336,22 +358,26 @@ namespace MatrizEsparsa
                 {
                     double valor = 0; // valor que será usado para calcular a soma dos valores
 
-                    if(atualM1.Valor != 0)  // se o valor armazenado na matriz a ser somada com outra for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem somados
+                    if (!(atualM1.Coluna > i || atualM2.Coluna > i))
                     {
-                        // armazenamos o valor da celula no valor e prosseguimos para a proxima celula desta matriz
-                        valor = atualM1.Valor;
-                        atualM1 = atualM1.Direita;
-                    }
 
-                    if (atualM2.Valor != 0) // se o valor armazenado na outra for 0, não percorreremos mais a linha dessa matriz, pois não terá mais valores a serem somados
-                    {
-                        // armazenamos o valor da celula no valor e prosseguimos para a proxima celula da outra matriz
-                        valor += atualM2.Valor;
-                        atualM2 = atualM2.Direita;
-                    }
+                        if (atualM1.Valor != 0)  // se o valor armazenado na matriz a ser somada com outra for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem somados
+                        {
+                            // armazenamos o valor da celula no valor e prosseguimos para a proxima celula desta matriz
+                            valor = atualM1.Valor;
+                            atualM1 = atualM1.Direita;
+                        }
 
-                    if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
-                        resultado.InserirElemento(valor, j, i);
+                        if (atualM2.Valor != 0) // se o valor armazenado na outra for 0, não percorreremos mais a linha dessa matriz, pois não terá mais valores a serem somados
+                        {
+                            // armazenamos o valor da celula no valor e prosseguimos para a proxima celula da outra matriz
+                            valor += atualM2.Valor;
+                            atualM2 = atualM2.Direita;
+                        }
+
+                        if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
+                            resultado.InserirElemento(valor, j, i);
+                    }
                 }
                 atualM2 = atualM2.Abaixo.Direita;// listas são circulares, logo retorna para o começo da próxima linha
                 atualM1 = atualM1.Abaixo.Direita;
@@ -377,22 +403,26 @@ namespace MatrizEsparsa
             {
                 for (int i = 0; i < this.colunas; i++) // percorre as colunas da matriz
                 {
-                    double valor = 1; // valor que será usado para calcular a multiplicação dos valores
-
-                    if (atualM1.Valor != 0 || atualM2.Valor != 0)  // se o valor armazenado nas matrizes for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem multiplicado, serão todos 0, o resultado
+                    if (!(i < atualM1.Coluna || i < atualM2.Coluna))
                     {
-                        // multiplicamos o valor da celula e prosseguimos para a proxima celula desta matriz
-                        valor *= atualM1.Valor;
-                        atualM1 = atualM1.Direita;
-                        
-                        // multiplicamos o valor da celula e prosseguimos para a proxima celula da outra matriz
-                        valor *= atualM2.Valor;
-                        atualM2 = atualM2.Direita;
+                        double valor = 1; // valor que será usado para calcular a multiplicação dos valores
 
-                        // inserimos o elemento que será diferente de 0, não precisando de verificação
-                        resultado.InserirElemento(valor, j, i);
-                    }                    
+                        if (atualM1.Valor != 0 || atualM2.Valor != 0)  // se o valor armazenado nas matrizes for 0, não percorreremos mais a linha da matriz, pois não terá mais valores a serem multiplicado, serão todos 0, o resultado
+                        {
+                            // multiplicamos o valor da celula e prosseguimos para a proxima celula desta matriz
+                            valor *= atualM1.Valor;
+                            atualM1 = atualM1.Direita;
+
+                            // multiplicamos o valor da celula e prosseguimos para a proxima celula da outra matriz
+                            valor *= atualM2.Valor;
+                            atualM2 = atualM2.Direita;
+
+                            // inserimos o elemento que será diferente de 0, não precisando de verificação
+                            resultado.InserirElemento(valor, j, i);
+                        }
+                    }
                 }
+
                 atualM2 = atualM2.Abaixo.Direita; // listas são circulares, logo retorna para o começo da próxima linha
                 atualM1 = atualM1.Abaixo.Direita;
             }

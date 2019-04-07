@@ -80,19 +80,19 @@
             this.panMatriz1.Location = new System.Drawing.Point(18, 1);
             this.panMatriz1.Margin = new System.Windows.Forms.Padding(4);
             this.panMatriz1.Name = "panMatriz1";
-            this.panMatriz1.Size = new System.Drawing.Size(558, 166);
+            this.panMatriz1.Size = new System.Drawing.Size(737, 166);
             this.panMatriz1.TabIndex = 0;
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(337, 83);
+            this.txtValor.Location = new System.Drawing.Point(501, 84);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(88, 26);
             this.txtValor.TabIndex = 10;
             // 
             // btnRetornar
             // 
-            this.btnRetornar.Location = new System.Drawing.Point(458, 135);
+            this.btnRetornar.Location = new System.Drawing.Point(622, 136);
             this.btnRetornar.Name = "btnRetornar";
             this.btnRetornar.Size = new System.Drawing.Size(85, 28);
             this.btnRetornar.TabIndex = 9;
@@ -102,7 +102,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(458, 68);
+            this.btnExcluir.Location = new System.Drawing.Point(622, 69);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(85, 28);
             this.btnExcluir.TabIndex = 8;
@@ -112,7 +112,7 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.Location = new System.Drawing.Point(458, 34);
+            this.btnInserir.Location = new System.Drawing.Point(622, 35);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(85, 28);
             this.btnInserir.TabIndex = 7;
@@ -122,7 +122,7 @@
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(458, 3);
+            this.btnCriar.Location = new System.Drawing.Point(622, 4);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(85, 28);
             this.btnCriar.TabIndex = 6;
@@ -133,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(333, 53);
+            this.label3.Location = new System.Drawing.Point(497, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 19);
             this.label3.TabIndex = 5;
@@ -142,7 +142,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(333, 16);
+            this.label2.Location = new System.Drawing.Point(497, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 19);
             this.label2.TabIndex = 4;
@@ -150,14 +150,14 @@
             // 
             // numColuna
             // 
-            this.numColuna.Location = new System.Drawing.Point(391, 53);
+            this.numColuna.Location = new System.Drawing.Point(555, 54);
             this.numColuna.Name = "numColuna";
             this.numColuna.Size = new System.Drawing.Size(34, 26);
             this.numColuna.TabIndex = 3;
             // 
             // numLinha
             // 
-            this.numLinha.Location = new System.Drawing.Point(391, 14);
+            this.numLinha.Location = new System.Drawing.Point(555, 15);
             this.numLinha.Name = "numLinha";
             this.numLinha.Size = new System.Drawing.Size(34, 26);
             this.numLinha.TabIndex = 2;
@@ -225,14 +225,14 @@
             // 
             this.panel1.Controls.Add(this.btnMultiplicar);
             this.panel1.Controls.Add(this.btnSomar);
-            this.panel1.Location = new System.Drawing.Point(606, 18);
+            this.panel1.Location = new System.Drawing.Point(979, 18);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(525, 129);
+            this.panel1.Size = new System.Drawing.Size(152, 129);
             this.panel1.TabIndex = 4;
             // 
             // btnMultiplicar
             // 
-            this.btnMultiplicar.Location = new System.Drawing.Point(4, 66);
+            this.btnMultiplicar.Location = new System.Drawing.Point(3, 69);
             this.btnMultiplicar.Name = "btnMultiplicar";
             this.btnMultiplicar.Size = new System.Drawing.Size(145, 34);
             this.btnMultiplicar.TabIndex = 13;
@@ -242,7 +242,7 @@
             // 
             // btnSomar
             // 
-            this.btnSomar.Location = new System.Drawing.Point(4, 25);
+            this.btnSomar.Location = new System.Drawing.Point(3, 20);
             this.btnSomar.Name = "btnSomar";
             this.btnSomar.Size = new System.Drawing.Size(145, 35);
             this.btnSomar.TabIndex = 12;
@@ -252,7 +252,7 @@
             // 
             // btnSomarK
             // 
-            this.btnSomarK.Location = new System.Drawing.Point(458, 101);
+            this.btnSomarK.Location = new System.Drawing.Point(622, 102);
             this.btnSomarK.Name = "btnSomarK";
             this.btnSomarK.Size = new System.Drawing.Size(85, 28);
             this.btnSomarK.TabIndex = 11;
@@ -264,7 +264,7 @@
             // 
             this.rbLista1.AutoSize = true;
             this.rbLista1.Checked = true;
-            this.rbLista1.Location = new System.Drawing.Point(259, 7);
+            this.rbLista1.Location = new System.Drawing.Point(228, 6);
             this.rbLista1.Name = "rbLista1";
             this.rbLista1.Size = new System.Drawing.Size(68, 23);
             this.rbLista1.TabIndex = 11;
@@ -276,7 +276,7 @@
             // rbLista2
             // 
             this.rbLista2.AutoSize = true;
-            this.rbLista2.Location = new System.Drawing.Point(259, 27);
+            this.rbLista2.Location = new System.Drawing.Point(228, 27);
             this.rbLista2.Name = "rbLista2";
             this.rbLista2.Size = new System.Drawing.Size(68, 23);
             this.rbLista2.TabIndex = 12;
@@ -286,7 +286,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 86);
+            this.label4.Location = new System.Drawing.Point(451, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 19);
             this.label4.TabIndex = 13;

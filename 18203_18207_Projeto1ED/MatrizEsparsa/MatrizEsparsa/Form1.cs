@@ -44,7 +44,7 @@ namespace MatrizEsparsa
                 else //Caso não, exibi-lo no segundo
                 {
                     lista2 = li;
-                    lista.ExibirDataGridview(dgvDois);
+                    lista2.ExibirDataGridview(dgvDois);
                 }
             }
         }
