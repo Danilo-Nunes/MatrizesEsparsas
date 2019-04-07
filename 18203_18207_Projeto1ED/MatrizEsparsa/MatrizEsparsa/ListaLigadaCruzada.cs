@@ -118,7 +118,7 @@ namespace MatrizEsparsa
             string[] linhaMatriz = new string[this.Colunas];
             Celula celLinha = cabeca; // inicia celula que será usada para percorrer as linhas da matriz
 
-            Console.WriteLine(this.ToString());
+            
 
             // percorre as linhas e colunas da matriz e insere os valores das celulas no gridView
             for (int j = 0; j < this.Linhas; j++)
@@ -128,8 +128,12 @@ namespace MatrizEsparsa
 
                 for (int i = 0; i < colunas; i++) // coloca os valores no vetor
                 {
-                    celColuna = celColuna.Direita;
-                    linhaMatriz[i] = celColuna.Valor.ToString();
+                    if (celColuna.Direita.Coluna != -1 && celColuna.Direita.Coluna == i)
+                    {
+                        celColuna = celColuna.Direita;
+                        linhaMatriz[i] = celColuna.Valor.ToString();
+                    }
+                    else linhaMatriz[i] = "0";
                 }
                 dgv.Rows.Add(linhaMatriz); // adiciona o vetor ao gridView
                 dgv.Rows[j].HeaderCell.Value = j.ToString(); // adiciona cabeçalho da linha
@@ -181,8 +185,8 @@ namespace MatrizEsparsa
             for (int i = 0; i <= coluna; i++)
                 celColuna = celColuna.Direita;
 
-            for (int j = 0; j <= coluna; j++)
-                celLinha = celLinha.Direita;
+            for (int j = 0; j <= linha; j++)
+                celLinha = celLinha.Abaixo;
 
             // criamos duas Celulas que armazenarão o atual e o anterior da linha onde percorreremos na coluna
             Celula anterior = celLinha;
@@ -209,14 +213,14 @@ namespace MatrizEsparsa
                     colunaAnt = colunaAt;
                     colunaAt = colunaAt.Abaixo;
                 }
-                nova.Abaixo = colunaAt;
-                colunaAnt.Abaixo = nova;
+                nova.Abaixo = colunaAnt;
+                colunaAt.Abaixo = nova;
             }
             else
                 atual.Valor = elemento; // caso não seja, apenas alteramos o valor guardado pela célula
         }
 
-        private double ValorDe(int linha, int coluna)
+        public double ValorDe(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
             if (linha < 0 || linha > this.linhas)
@@ -227,7 +231,7 @@ namespace MatrizEsparsa
 
             Celula celLinha = cabeca;            
 
-            for (int i = 0; i < linha; i++) // percorre a linha até achar a posição desejada
+            for (int i = 0; i <= linha; i++) // percorre a linha até achar a posição desejada
                 celLinha = celLinha.Abaixo;
 
             Celula celColuna = celLinha.Direita; // inicia a célula da coluna, onde percorreremos 
@@ -251,14 +255,14 @@ namespace MatrizEsparsa
             Celula celColuna = cabeca;
 
             // percorre as linhas e depois as colunas até achar as desejadas
-            for (int i = 0; i < linha; i++)
+            for (int i = 0; i <= linha; i++)
                 celLinha = celLinha.Abaixo;
 
-            for (int i = 0; i < coluna; i++)
+            for (int i = 0; i <= coluna; i++)
                 celColuna = celColuna.Direita;
 
             Celula anteriorLinha = celLinha;
-            Celula atualLinha = celLinha.Direita; // celula a sedr removida da matriz
+            Celula atualLinha = celLinha.Direita; // celula a ser removida da matriz
 
             while(atualLinha.Coluna != coluna && atualLinha.Coluna != -1) // percorre a coluna até achar a desaja ou até que ela seja igual a cabeca
             {
@@ -273,7 +277,7 @@ namespace MatrizEsparsa
 
             Celula atualColuna = celColuna; // celula que usarem,os para percorre a coluna
 
-            while (atualColuna != atualLinha) // percorre até achar o anterior ao elemento 
+            while (atualColuna.Abaixo != atualLinha) // percorre até achar o anterior ao elemento 
                 atualColuna = atualColuna.Abaixo;
 
             atualColuna.Abaixo = atualLinha.Abaixo; // elimina o ponteiro do elemento anterior a ele na coluna que se liga ao valor
