@@ -26,7 +26,7 @@ namespace MatrizEsparsa
             private set
             {
                 if (value > 0)
-                    this.colunas = value;
+                    this.linhas = value;
                 else
                     throw new Exception("O número de linhas deve ser maior que 0.");
             }
@@ -40,7 +40,7 @@ namespace MatrizEsparsa
             private set
             {
                 if (value > 0)
-                    this.linhas = value;
+                    this.colunas = value;
                 else
                     throw new Exception("O número de colunas deve ser maior que 0.");
             }
@@ -217,10 +217,10 @@ namespace MatrizEsparsa
         private double ValorDe(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (linha <= 0 || linha >= this.linhas)
+            if (linha < 0 || linha > this.linhas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
             Celula celLinha = cabeca;            
@@ -239,10 +239,10 @@ namespace MatrizEsparsa
         public bool RemoverEm(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (linha <= 0 || linha >= this.linhas)
+            if (linha < 0 || linha > this.linhas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
             Celula celLinha = cabeca;
@@ -282,7 +282,7 @@ namespace MatrizEsparsa
         public void SomarNaColuna(double x, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
             if (x == 0)
