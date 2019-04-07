@@ -251,10 +251,10 @@ namespace MatrizEsparsa
             Celula celColuna = cabeca;
 
             // percorre as linhas e depois as colunas até achar as desejadas
-            for (int i = 0; i < linha; i++)
+            for (int i = 0; i <= linha; i++)
                 celLinha = celLinha.Abaixo;
 
-            for (int i = 0; i < coluna; i++)
+            for (int i = 0; i <= coluna; i++)
                 celColuna = celColuna.Direita;
 
             Celula anteriorLinha = celLinha;
