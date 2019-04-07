@@ -238,7 +238,7 @@ namespace MatrizEsparsa
             return (double)celColuna.Valor; // retorna o valor armazenado pela célula, caso seja nenhum, retornará 0(celula coluna = celula linha)
         }
 
-        public bool RemoverEm(int linha, int coluna)
+        public bool RemoverEm(int linha, int coluna)// !
         {
             // condições que verificam a validade dos parâmetros passados
             if (linha < 0 || linha > this.linhas)
