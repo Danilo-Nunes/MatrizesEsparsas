@@ -219,10 +219,10 @@ namespace MatrizEsparsa
         private double ValorDe(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (linha <= 0 || linha >= this.linhas)
+            if (linha < 0 || linha > this.linhas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
             Celula celLinha = cabeca;            
@@ -241,10 +241,10 @@ namespace MatrizEsparsa
         public bool RemoverEm(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (linha <= 0 || linha >= this.linhas)
+            if (linha < 0 || linha > this.linhas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
             Celula celLinha = cabeca;
@@ -284,7 +284,7 @@ namespace MatrizEsparsa
         public void SomarNaColuna(double x, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
-            if (coluna <= 0 || coluna >= this.colunas)
+            if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
             if (x == 0)
