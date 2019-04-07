@@ -238,7 +238,7 @@ namespace MatrizEsparsa
             return (double)celColuna.Valor; // retorna o valor armazenado pela célula, caso seja nenhum, retornará 0(celula coluna = celula linha)
         }
 
-        public bool RemoverEm(int linha, int coluna)// !
+        public bool RemoverEm(int linha, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
             if (linha < 0 || linha > this.linhas)
@@ -281,13 +281,13 @@ namespace MatrizEsparsa
             return true; 
         }
 
-        public void SomarNaColuna(double x, int coluna)
+        public void SomarNaColuna(double k, int coluna)
         {
             // condições que verificam a validade dos parâmetros passados
             if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("Linha fora dos limites da matriz."); // ArgumentOutOfRangeException
 
-            if (x == 0)
+            if (k == 0)
                 return; // se for 0, não precisa fazer nada
 
             double valorDoAtual = 0;
@@ -304,12 +304,12 @@ namespace MatrizEsparsa
                     celColunaAnterior = celColuna; // atualiza o valor da celularAnterior para a celula
                     celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
                     valorDoAtual = celColuna.Valor; // obtem o valor armazenado por ela para comparação
-                    if(valorDoAtual + x == 0) // se a soma resultar em zero removeremos a celula da matriz
+                    if(valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
                     {
                         celColunaAnterior.Direita = celColuna.Direita; //  RemoverEm(i, coluna); seria ineficiente                        
                         continue; // volta ao loop sem passar no comando de baixo
                     }
-                    celColuna.Valor = valorDoAtual + x; // soma o valor antigo dela ao desejado para soma
+                    celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
                 }
             }
         }
