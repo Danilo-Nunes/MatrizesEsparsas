@@ -13,7 +13,7 @@ namespace MatrizEsparsa
     {
         // atributos nescessários para a criação de uma lista ligada cruzada
         int linhas, colunas;
-        Celula cabeca;
+        Celula cabeca; // celula principal a qual usaremos para criar as outras, sendo a base da matriz
 
         // retorno quando a célula não está na matriz
         public const int padrao = 0;
@@ -184,12 +184,13 @@ namespace MatrizEsparsa
             for (int j = 0; j <= coluna; j++)
                 celLinha = celLinha.Direita;
 
-            // criamos duas Celulas que armazenarão o atual e o anterior da linha onde percorreremos na coluna
+            // criamos duas Celulas que armazenarão o atual(posterior a celula a ser inserida) e o anterior(a celula a ser inserida) da linha onde percorreremos na coluna
             Celula anterior = celLinha;
             Celula atual = celLinha.Direita;
 
             while(atual.Coluna < coluna && atual.Coluna != -1) // percorre as colunas até achar a posição desejada ou até que seja igual a cabeca
             {
+                // atualiza o anterior e o atual
                 anterior = atual;
                 atual = atual.Direita;
             }
@@ -198,17 +199,21 @@ namespace MatrizEsparsa
             {
                 Celula nova = new Celula(elemento, linha, coluna); // cria célula a ser inserida na matriz
 
+                // insere a célula entre as outras duas, anterior a esta e a frente desta na linha
                 anterior.Direita = nova; 
                 nova.Direita = atual;
 
+                // instancia ponteiros para a celula anterior e posterior a esta na coluna
                 Celula colunaAnt = celColuna;
                 Celula colunaAt = celColuna.Abaixo;
 
                 while (colunaAt.Abaixo != celColuna && colunaAt.Linha != linha) // percorre a coluna até achar a posião desejada e depois insere ela no ponteiro da célula anterior 
                 {
+                    // atualiza o anterior e o posterior da coluna
                     colunaAnt = colunaAt;
                     colunaAt = colunaAt.Abaixo;
                 }
+                //insere a célula entre as outras duas, anterior a esta e a frente desta na coluna
                 nova.Abaixo = colunaAt;
                 colunaAnt.Abaixo = nova;
             }
@@ -225,7 +230,7 @@ namespace MatrizEsparsa
             if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
-            Celula celLinha = cabeca;            
+            Celula celLinha = cabeca; // inicia celula da linha        
 
             for (int i = 0; i < linha; i++) // percorre a linha até achar a posição desejada
                 celLinha = celLinha.Abaixo;
@@ -247,6 +252,7 @@ namespace MatrizEsparsa
             if (coluna < 0 || coluna > this.colunas)
                 throw new Exception("coluna fora dos limites da matriz.");
 
+            // inicia instancias de Celula para armazenar os ponteiros da linha e da coluna
             Celula celLinha = cabeca;
             Celula celColuna = cabeca;
 
@@ -257,11 +263,12 @@ namespace MatrizEsparsa
             for (int i = 0; i <= coluna; i++)
                 celColuna = celColuna.Direita;
 
-            Celula anteriorLinha = celLinha;
-            Celula atualLinha = celLinha.Direita; // celula a sedr removida da matriz
+            Celula anteriorLinha = celLinha; // armazena ponteiro para a celula anterior com o valor do atual antes de ser incrementado
+            Celula atualLinha = celLinha.Direita; // celula a ser removida da matriz
 
             while(atualLinha.Coluna != coluna && atualLinha.Coluna != -1) // percorre a coluna até achar a desaja ou até que ela seja igual a cabeca
             {
+                // atualiza o anterior e o atual da linha
                 anteriorLinha = atualLinha;
                 atualLinha = atualLinha.Direita;
             }
@@ -290,27 +297,30 @@ namespace MatrizEsparsa
             if (k == 0)
                 return; // se for 0, não precisa fazer nada
 
-            double valorDoAtual = 0;
-            Celula celLinha = cabeca;
+            double valorDoAtual = 0; // armazenará o valor da célula para consulta
 
-            for(int j = 0; j < this.Linhas; j++)
+            Celula celColuna = cabeca; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+            
+            for (int j = 0; j < coluna; j++) // percorre as colunas da matriz até achar a desejada
             {
-                celLinha = celLinha.Abaixo;
-                Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
-                Celula celColunaAnterior; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz
+                celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
+            }
 
-                for (int i = 0; i < colunas; i++) // coloca os valores no vetor
+            Celula celLinhaAnterior; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz                
+            Celula celLinha = celColuna; // celula da linha que usaremos para percorrer a coluna
+
+            for (int i = 0; i < linhas; i++) // percorre a coluna até acabar as linhas
+            {
+                celLinhaAnterior = celLinha; // armazena valor atual da linha
+                celLinha = celLinha.Abaixo; // avança para a próxima célula
+                valorDoAtual = celLinha.Valor; // obtem o valor armazenadona célula para comparação
+
+                if (valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
                 {
-                    celColunaAnterior = celColuna; // atualiza o valor da celularAnterior para a celula
-                    celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
-                    valorDoAtual = celColuna.Valor; // obtem o valor armazenado por ela para comparação
-                    if(valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
-                    {
-                        celColunaAnterior.Direita = celColuna.Direita; //  RemoverEm(i, coluna); seria ineficiente                        
-                        continue; // volta ao loop sem passar no comando de baixo
-                    }
-                    celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
+                    celLinhaAnterior.Abaixo = celLinha.Abaixo; // remove a célula que valeria 0 da matriz                        
+                    continue; // volta ao loop sem passar no comando de baixo
                 }
+                celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
             }
         }
 
