@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numColuna = new System.Windows.Forms.NumericUpDown();
             this.numLinha = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnLerArquivo = new System.Windows.Forms.Button();
             this.dgvUm = new System.Windows.Forms.DataGridView();
             this.dgvDois = new System.Windows.Forms.DataGridView();
@@ -75,7 +74,6 @@
             this.panMatriz1.Controls.Add(this.label2);
             this.panMatriz1.Controls.Add(this.numColuna);
             this.panMatriz1.Controls.Add(this.numLinha);
-            this.panMatriz1.Controls.Add(this.label1);
             this.panMatriz1.Controls.Add(this.btnLerArquivo);
             this.panMatriz1.Location = new System.Drawing.Point(18, 1);
             this.panMatriz1.Margin = new System.Windows.Forms.Padding(4);
@@ -161,16 +159,6 @@
             this.numLinha.Name = "numLinha";
             this.numLinha.Size = new System.Drawing.Size(34, 26);
             this.numLinha.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 86);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Ou";
             // 
             // btnLerArquivo
             // 
@@ -329,7 +317,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numColuna;
         private System.Windows.Forms.NumericUpDown numLinha;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLerArquivo;
         private System.Windows.Forms.DataGridView dgvUm;
         private System.Windows.Forms.DataGridView dgvDois;
