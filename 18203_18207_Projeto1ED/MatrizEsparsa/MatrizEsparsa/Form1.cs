@@ -35,7 +35,20 @@ namespace MatrizEsparsa
                     lista.InserirElemento(valor, linha, col);
                 }
 
+<<<<<<< HEAD
                 lista.ExibirDataGridview(dgvUm);
+=======
+                if(rbLista1.Checked) //Caso foi solicitado pelo usuário que esse arquivo seja a lista1, exibi-la no primeiro DGV
+                {
+                    lista = li;
+                    lista.ExibirDataGridview(dgvUm);
+                }
+                else //Caso não, exibi-lo no segundo
+                {
+                    lista2 = li;
+                    lista.ExibirDataGridview(dgvDois);
+                }
+>>>>>>> parent of 2d41df8... asd
             }
         }
         public FrmMatrizEsparsa()

@@ -74,11 +74,16 @@
             this.panMatriz1.Location = new System.Drawing.Point(18, 18);
             this.panMatriz1.Margin = new System.Windows.Forms.Padding(4);
             this.panMatriz1.Name = "panMatriz1";
+<<<<<<< HEAD
             this.panMatriz1.Size = new System.Drawing.Size(558, 129);
+=======
+            this.panMatriz1.Size = new System.Drawing.Size(558, 166);
+>>>>>>> parent of 2d41df8... asd
             this.panMatriz1.TabIndex = 0;
             // 
             // txtResultado
             // 
+<<<<<<< HEAD
             this.txtResultado.Location = new System.Drawing.Point(391, 98);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
@@ -88,6 +93,16 @@
             // btnRetornar
             // 
             this.btnRetornar.Location = new System.Drawing.Point(458, 98);
+=======
+            this.txtValor.Location = new System.Drawing.Point(337, 83);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(88, 26);
+            this.txtValor.TabIndex = 10;
+            // 
+            // btnRetornar
+            // 
+            this.btnRetornar.Location = new System.Drawing.Point(458, 135);
+>>>>>>> parent of 2d41df8... asd
             this.btnRetornar.Name = "btnRetornar";
             this.btnRetornar.Size = new System.Drawing.Size(85, 28);
             this.btnRetornar.TabIndex = 9;
@@ -96,7 +111,11 @@
             // 
             // btnExcluir
             // 
+<<<<<<< HEAD
             this.btnExcluir.Location = new System.Drawing.Point(458, 67);
+=======
+            this.btnExcluir.Location = new System.Drawing.Point(458, 68);
+>>>>>>> parent of 2d41df8... asd
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(85, 28);
             this.btnExcluir.TabIndex = 8;
@@ -105,7 +124,11 @@
             // 
             // btnInserir
             // 
+<<<<<<< HEAD
             this.btnInserir.Location = new System.Drawing.Point(458, 37);
+=======
+            this.btnInserir.Location = new System.Drawing.Point(458, 34);
+>>>>>>> parent of 2d41df8... asd
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(85, 28);
             this.btnInserir.TabIndex = 7;
@@ -114,7 +137,11 @@
             // 
             // btnCriar
             // 
+<<<<<<< HEAD
             this.btnCriar.Location = new System.Drawing.Point(458, 7);
+=======
+            this.btnCriar.Location = new System.Drawing.Point(458, 3);
+>>>>>>> parent of 2d41df8... asd
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(85, 28);
             this.btnCriar.TabIndex = 6;
@@ -217,8 +244,11 @@
             // 
             this.panel1.Controls.Add(this.btnMultiplicar);
             this.panel1.Controls.Add(this.btnSomar);
+<<<<<<< HEAD
             this.panel1.Controls.Add(this.btnSomarK);
             this.panel1.Controls.Add(this.txtValor);
+=======
+>>>>>>> parent of 2d41df8... asd
             this.panel1.Location = new System.Drawing.Point(606, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 129);
@@ -226,7 +256,11 @@
             // 
             // btnMultiplicar
             // 
+<<<<<<< HEAD
             this.btnMultiplicar.Location = new System.Drawing.Point(114, 86);
+=======
+            this.btnMultiplicar.Location = new System.Drawing.Point(4, 66);
+>>>>>>> parent of 2d41df8... asd
             this.btnMultiplicar.Name = "btnMultiplicar";
             this.btnMultiplicar.Size = new System.Drawing.Size(145, 34);
             this.btnMultiplicar.TabIndex = 13;
@@ -235,7 +269,11 @@
             // 
             // btnSomar
             // 
+<<<<<<< HEAD
             this.btnSomar.Location = new System.Drawing.Point(114, 45);
+=======
+            this.btnSomar.Location = new System.Drawing.Point(4, 25);
+>>>>>>> parent of 2d41df8... asd
             this.btnSomar.Name = "btnSomar";
             this.btnSomar.Size = new System.Drawing.Size(145, 35);
             this.btnSomar.TabIndex = 12;
@@ -244,12 +282,17 @@
             // 
             // btnSomarK
             // 
+<<<<<<< HEAD
             this.btnSomarK.Location = new System.Drawing.Point(114, 2);
+=======
+            this.btnSomarK.Location = new System.Drawing.Point(458, 101);
+>>>>>>> parent of 2d41df8... asd
             this.btnSomarK.Name = "btnSomarK";
             this.btnSomarK.Size = new System.Drawing.Size(145, 35);
             this.btnSomarK.TabIndex = 11;
             this.btnSomarK.Text = "Somar Constante";
             this.btnSomarK.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
             // 
             // txtValor
             // 
@@ -257,6 +300,41 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(105, 26);
             this.txtValor.TabIndex = 11;
+=======
+            this.btnSomarK.Click += new System.EventHandler(this.BtnSomarK_Click);
+            // 
+            // rbLista1
+            // 
+            this.rbLista1.AutoSize = true;
+            this.rbLista1.Checked = true;
+            this.rbLista1.Location = new System.Drawing.Point(259, 7);
+            this.rbLista1.Name = "rbLista1";
+            this.rbLista1.Size = new System.Drawing.Size(68, 23);
+            this.rbLista1.TabIndex = 11;
+            this.rbLista1.TabStop = true;
+            this.rbLista1.Text = "Lista 1";
+            this.rbLista1.UseVisualStyleBackColor = true;
+            this.rbLista1.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
+            // 
+            // rbLista2
+            // 
+            this.rbLista2.AutoSize = true;
+            this.rbLista2.Location = new System.Drawing.Point(259, 27);
+            this.rbLista2.Name = "rbLista2";
+            this.rbLista2.Size = new System.Drawing.Size(68, 23);
+            this.rbLista2.TabIndex = 12;
+            this.rbLista2.Text = "Lista 2";
+            this.rbLista2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(287, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 19);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Valor:";
+>>>>>>> parent of 2d41df8... asd
             // 
             // FrmMatrizEsparsa
             // 

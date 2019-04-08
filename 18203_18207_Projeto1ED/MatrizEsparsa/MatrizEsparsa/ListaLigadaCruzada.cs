@@ -213,9 +213,14 @@ namespace MatrizEsparsa
                     colunaAnt = colunaAt;
                     colunaAt = colunaAt.Abaixo;
                 }
+<<<<<<< HEAD
                 //insere a célula entre as outras duas, anterior a esta e a frente desta na coluna
                 nova.Abaixo = colunaAt;
                 colunaAnt.Abaixo = nova;
+=======
+                nova.Abaixo = colunaAnt;
+                colunaAt.Abaixo = nova;
+>>>>>>> parent of 2d41df8... asd
             }
             else
                 atual.Valor = elemento; // caso não seja, apenas alteramos o valor guardado pela célula
@@ -297,6 +302,7 @@ namespace MatrizEsparsa
             if (k == 0)
                 return; // se for 0, não precisa fazer nada
 
+<<<<<<< HEAD
             double valorDoAtual = 0; // armazenará o valor da célula para consulta
 
             Celula celColuna = cabeca; // inicia celula que será usada para percorrer as colunas da linha da matriz 
@@ -319,6 +325,28 @@ namespace MatrizEsparsa
                 {
                     celLinhaAnterior.Abaixo = celLinha.Abaixo; // remove a célula que valeria 0 da matriz                        
                     continue; // volta ao loop sem passar no comando de baixo
+=======
+            double valorDoAtual = 0;
+            Celula celLinha = cabeca;
+
+            for(int j = 0; j < this.Linhas; j++)
+            {
+                celLinha = celLinha.Abaixo;
+                Celula celColuna = celLinha; // inicia celula que será usada para percorrer as colunas da linha da matriz 
+                Celula celColunaAnterior; // inicia celula que armazenará o anterior para caso seja nescessário remover uma celula da matriz
+
+                for (int i = 0; i < colunas; i++) // coloca os valores no vetor
+                {
+                    celColunaAnterior = celColuna; // atualiza o valor da celularAnterior para a celula
+                    celColuna = celColuna.Direita; // atualiza o valor da celula atual para a próxima
+                    valorDoAtual = celColuna.Valor; // obtem o valor armazenado por ela para comparação
+                    if(valorDoAtual + k == 0) // se a soma resultar em zero removeremos a celula da matriz
+                    {
+                        celColunaAnterior.Direita = celColuna.Direita; //  RemoverEm(i, coluna); seria ineficiente                        
+                        continue; // volta ao loop sem passar no comando de baixo
+                    }
+                    celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
+>>>>>>> parent of 2d41df8... asd
                 }
                 celColuna.Valor = valorDoAtual + k; // soma o valor antigo dela ao desejado para soma
             }
@@ -355,6 +383,15 @@ namespace MatrizEsparsa
                         valor += atualM2.Valor;
                         atualM2 = atualM2.Direita;
                     }
+<<<<<<< HEAD
+=======
+
+                    if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
+                        resultado.InserirElemento(valor, j, i);
+                }
+                atualM2 = atualM2.Abaixo.Direita;// listas são circulares, logo retorna para o começo da próxima linha
+                atualM1 = atualM1.Abaixo.Direita;
+>>>>>>> parent of 2d41df8... asd
 
                     if (valor != 0) // se o resultado não for 0, colocamos ele na matriz resultante
                         resultado.InserirElemento(valor, j, i);
